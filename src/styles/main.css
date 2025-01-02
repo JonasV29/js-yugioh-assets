@@ -25,6 +25,7 @@
         rgba(0,0,0,0.8) 50%,
         rgba(0,0,0,1) 100%
     );
+}
 
     .container {
         position: relative;
@@ -70,4 +71,3 @@
         font-size: 1rem;
     }
 
-}
