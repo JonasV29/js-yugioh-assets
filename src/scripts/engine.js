@@ -19,6 +19,11 @@ const state = { //State is associated with all elements will be manipulated
       },
 };
 
+const playerSides = {
+    player1: "player-field-card",
+    computer: "computer-field-card",
+}
+
 const cardData = [
     {
         id: 0,
@@ -48,6 +53,19 @@ const cardData = [
     },
 
 ];
-function init() {}
+
+async function drawCards(cardNumbers, fieldSide) { //Async declaration is a declaration that returns a new promise 
+    // which will be resolved with the value returned
+    for(let i = 0; i <cardNumbers; i++) {
+        const randomIdCard = await getRandomCardId() //Await is a operator is used to wait for a promise
+        const cardImage = await createcardImage(randomIdCard,fieldSide);
+
+        document.getElementById(fieldSide).appendChild(cardImage);
+    }
+}
+function init() {
+    drawCards(5, playerSides.player1);
+    drawCards(5, playerSides.computer);
+}
 
 init();
