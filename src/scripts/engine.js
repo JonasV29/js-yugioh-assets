@@ -54,11 +54,36 @@ const cardData = [
 
 ];
 
+async function createCardImage(randomIdCard,fieldSide) {
+    const cardImage = document.createElement("img");
+    cardImage.setAttribute("height","100px");
+    cardImage.setAttribute("src",".src/assets/icons/card-back.png");
+    cardImage.setAttribute("data-id",randomIdCard);
+    cardImage.classList.add("card");
+
+    if(fieldSide === playerSides.player1) {
+        cardImage.addEventListener("click", () => {
+         setcardsField(cardImage.getAttribute("data-id"));
+        });
+    }
+
+    cardImage.addEventListener("mouseover", () => {
+        drawSelectCard(randomIdCard);
+    });
+
+    return cardImage;
+}
+
+async function getRandomCardId() {
+    const randomIndex = Math.floor(Math.random() * cardData.length);
+    return cardData[randomIndex].id; // this part the function will return a random ID 
+}
+
 async function drawCards(cardNumbers, fieldSide) { //Async declaration is a declaration that returns a new promise 
     // which will be resolved with the value returned
     for(let i = 0; i <cardNumbers; i++) {
         const randomIdCard = await getRandomCardId() //Await is a operator is used to wait for a promise
-        const cardImage = await createcardImage(randomIdCard,fieldSide);
+        const cardImage = await createCardImage(randomIdCard,fieldSide);
 
         document.getElementById(fieldSide).appendChild(cardImage);
     }
