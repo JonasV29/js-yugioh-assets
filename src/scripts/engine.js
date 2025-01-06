@@ -20,8 +20,8 @@ const state = { //State is associated with all elements will be manipulated
 };
 
 const playerSides = {
-    player1: "player-field-card",
-    computer: "computer-field-card",
+    player1: "player-cards",
+    computer: "computer-cards",
 }
 
 const cardData = [
@@ -29,7 +29,7 @@ const cardData = [
         id: 0,
         name: "Blue Eyes White Dragon",
         type: "Paper",
-        img: ".src/assets/icons/dragon.png",
+        img: "./src/assets/icons/dragon.png",
         WinOf: [1],
         LoseOf: [2],
     },
@@ -38,7 +38,7 @@ const cardData = [
         id: 1,
         name: "Dark Magician",
         type: "Rock",
-        img: ".src/assets/icons/magician.png",
+        img: "./src/assets/icons/magician.png",
         WinOf: [2],
         LoseOf: [0],
     },
@@ -47,7 +47,7 @@ const cardData = [
         id: 2,
         name: "Exodia",
         type: "Scissors",
-        img: ".src/assets/icons/exodia.png",
+        img: "./src/assets/icons/exodia.png",
         WinOf: [0],
         LoseOf: [1],
     },
@@ -57,7 +57,7 @@ const cardData = [
 async function createCardImage(randomIdCard,fieldSide) {
     const cardImage = document.createElement("img");
     cardImage.setAttribute("height","100px");
-    cardImage.setAttribute("src",".src/assets/icons/card-back.png");
+    cardImage.setAttribute("src","./src/assets/icons/card-back.png");
     cardImage.setAttribute("data-id",randomIdCard);
     cardImage.classList.add("card");
 
