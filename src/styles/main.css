@@ -59,7 +59,7 @@
         background-color: #fff;
         padding:1rem;
         display: flex;
-        flex-direction: collums;
+        flex-direction: column;
         align-items: center;
         justify-content: space-between;
         height: 6rem;

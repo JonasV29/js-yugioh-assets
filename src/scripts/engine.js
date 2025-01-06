@@ -73,6 +73,13 @@ async function createCardImage(randomIdCard,fieldSide) {
 
     return cardImage;
 }
+async function drawSelectCard(index){
+    state.cardSprites.avatar.src = cardData[index].img;
+    state.cardSprites.name.innerText = cardData[index].name;
+    state.cardSprites.type.innerText = "Attibute : " + cardData[index].type
+    
+}
+
 
 async function getRandomCardId() {
     const randomIndex = Math.floor(Math.random() * cardData.length);
