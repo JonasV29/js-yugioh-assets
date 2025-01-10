@@ -91,8 +91,34 @@ async function setcardsField(cardId) {
 
      let duelResults = await checkDuelResults(cardId, computerCardId);
 
-    // await updateScore();
-    // await drawButton(duelResults); 
+     await updateScore();
+     await drawButton(duelResults); 
+}
+
+async function updateScore() {
+    state.score.scoreBox.innerText = `Win: ${state.score
+    .playerScore} | Lose: ${state.score.computerScore}`;
+}
+
+async function drawButton(text) {
+    state.actions.button.innerText = text; 
+    state.button.style.display = "block";
+}
+
+async function checkDuelResults(playerCardId, computerCardId) {
+    let duelResults = "Draw"
+    let plyerCard = cardData[playerCardId];
+
+    if(playerCardId.WinOf.includes(computerCardId)) {
+        duelResults = "Win";
+        state.score.playerScore++;
+    } else if (plyerCard.LoseOf.includes(computerCardId)){
+        duelResults = "Lose";
+        state.score.computerScore++;
+    }  else {
+       return duelResults;
+    }
+
 }
    async function removeAllCardsImages() {
 
