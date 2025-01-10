@@ -14,15 +14,14 @@ const state = { //State is associated with all elements will be manipulated
         player: document.getElementById('player-field-card'),
         computer: document.getElementById('computer-field-card'),
       },
+      playerSides: {
+        player1: "player-cards",
+        computer: "computer-cards",
+    },
       actions: {
         button: document.getElementById('next-duel'),
       },
 };
-
-const playerSides = {
-    player1: "player-cards",
-    computer: "computer-cards",
-}
 
 const cardData = [
     {
@@ -90,12 +89,21 @@ async function setcardsField(cardId) {
     state.fieldCards.player.src = cardData[cardId].img;
     state.fieldCards.computer.src = cardData[computerCardId].img;
 
-    let duelResults = await checkDuelResults(cardId, computerCardId);
+     let duelResults = await checkDuelResults(cardId, computerCardId);
 
-    await updateScore();
-    await drawButton(duelResults);
+    // await updateScore();
+    // await drawButton(duelResults); 
 }
+   async function removeAllCardsImages() {
 
+    let cards = document.querySelector("#computer-cards");
+    let imgElements = cards.querySelectorAll("img");
+    imgElements.forEach((img) => img.remove());
+
+    cards = document.querySelector("#player-cards");
+    imgElements = cards.querySelectorAll("img");
+    imgElements.forEach((img) => img.remove());
+   }
 
 async function drawSelectCard(index){
     state.cardSprites.avatar.src = cardData[index].img;
