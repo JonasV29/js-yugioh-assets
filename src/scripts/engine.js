@@ -60,7 +60,7 @@ async function createCardImage(randomIdCard,fieldSide) {
     cardImage.setAttribute("data-id",randomIdCard);
     cardImage.classList.add("card");
 
-    if(fieldSide === playerSides.player1) {
+    if(fieldSide === state.playerSides.player1) {
 
         cardImage.addEventListener("mouseover", () => {
             drawSelectCard(randomIdCard);
@@ -106,18 +106,21 @@ async function drawButton(text) {
 }
 
 async function checkDuelResults(playerCardId, computerCardId) {
-    let duelResults = "Draw"
+    let duelResults = "Draw";
     let plyerCard = cardData[playerCardId];
 
     if(playerCardId.WinOf.includes(computerCardId)) {
         duelResults = "Win";
         state.score.playerScore++;
-    } else if (plyerCard.LoseOf.includes(computerCardId)){
+    }
+
+    if (plyerCard.LoseOf.includes(computerCardId)) {
         duelResults = "Lose";
         state.score.computerScore++;
-    }  else {
+    } 
+
        return duelResults;
-    }
+    
 
 }
    async function removeAllCardsImages() {
@@ -154,8 +157,8 @@ async function drawCards(cardNumbers, fieldSide) { //Async declaration is a decl
     }
 }
 function init() {
-    drawCards(5, playerSides.player1);
-    drawCards(5, playerSides.computer);
+    drawCards(5, state.playerSides.player1);
+    drawCards(5, state.playerSides.computer);
 }
 
 init();
