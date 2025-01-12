@@ -102,7 +102,7 @@ async function updateScore() {
 
 async function drawButton(text) {
     state.actions.button.innerText = text.toUpperCase(); 
-    state.button.style.display = "block";
+    state.actions.button.style.display = "block";
 }
 
 async function checkDuelResults(playerCardId, computerCardId) {
@@ -170,7 +170,7 @@ async function resetDuel() {
 }
 
 async function playAudio(status) {
-    const audio = new Audio(`./src/assets/${status}.wav`)
+    const audio = new Audio(`./src/assets/audios/${status}.wav`);
     
     audio.play();
 } 
